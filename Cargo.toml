@@ -2,29 +2,19 @@
 resolver = "2"
 members  = [
   "contracts/hook",
-  #"packages/*",
 ]
 
 [workspace.package]
 version       = "0.3.0"
-authors       = ["Jackson Swenson <jacksonswenson@securesecrets.org>"]
+authors       = ["Jack Sisson <SissonJ>"]
 edition       = "2021"
 rust-version  = "1.71.0"
-license       = "TBD"
-homepage      = ""
-repository    = ""
-documentation = ""
 keywords      = ["cosmwasm"]
 
 [workspace.dependencies]
 cosmwasm-schema      = "1.5.4"
 cosmwasm-std = { package = "secret-cosmwasm-std", version = "1.1.11", features = ["stargate"]}
 secret-toolkit = { git = "https://github.com/scrtlabs/secret-toolkit", tag = "v0.10.0" }
-#cw2                  = "1.1"
-#cw20                 = "1.1"
-#cw-storage-plus      = "1"
-#cw-utils             = "1.0.3"
-#cw-multi-test        = "0.20.0"
 ibc-proto            = { version = "0.32.1", default-features = false }
 mockall              = "0.12.1"
 prost                = "0.11"

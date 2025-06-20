@@ -15,9 +15,3 @@ build-mainnet-reproducible:
 		--mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
 		mr7uca/wasm-contract-optimizer:0.0.10
 	mv ./optimized-wasm/*.wasm.gz ./contract.wasm.gz
-
-compile-optimized-reproducible:
-	docker run --rm -v "$$(pwd)":/contract \
-		--mount type=volume,source="$$(basename "$$(pwd)")_cache",target=/code/target \
-		--mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
-		enigmampc/secret-contract-optimizer:1.0.7

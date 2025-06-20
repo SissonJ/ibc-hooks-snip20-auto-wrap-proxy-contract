@@ -17,8 +17,9 @@ pub struct Snip20ReceiveMsg {
 pub struct UnwrapTransfer {
     pub channel: String,
     pub recipient_address: String,
-    pub code_hash: String,
+    pub snip20_code_hash: String,
     pub denom: String,
+    pub memo: Option<String>,
 }
 
 #[cw_serde]

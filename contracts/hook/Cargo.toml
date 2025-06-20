@@ -1,5 +1,5 @@
 [package]
-name          = "derivative-hook"
+name          = "ibc-snip20-wrapping-hook"
 version       = { workspace = true }
 rust-version  = { workspace = true }
 authors       = { workspace = true }
@@ -24,11 +24,6 @@ cosmwasm-schema   = { workspace = true }
 cosmwasm-std      = { workspace = true }
 secret-toolkit    = { workspace = true }
 serde             = { workspace = true }
-#cw2               = { workspace = true }
-#cw20              = { workspace = true }
-#cw-storage-plus   = { workspace = true }
-#cw-utils          = { workspace = true }
-#skip              = { workspace = true }
 thiserror         = { workspace = true }
 base64ct             = { workspace = true }
 

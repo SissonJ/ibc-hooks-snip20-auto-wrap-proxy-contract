@@ -46,8 +46,8 @@ pub fn execute(_deps: DepsMut, env: Env, info: MessageInfo, msg: ExecMsg) -> Std
                 Ok(Response::default().add_messages([
                     CosmosMsg::Wasm(cosmwasm_std::WasmMsg::Execute {
                         contract_addr: info.sender.clone().to_string(),
-                        code_hash: decoded_msg.code_hash.clone(),
-                        msg: to_binary(&Snip20HandleMsg::Deposit { padding: None }).unwrap(),
+                        code_hash: decoded_msg.snip20_code_hash.clone(),
+                        msg: to_binary(&Snip20HandleMsg::Redeem { amount: recv_msg.amount.clone(), denom: decoded_msg.denom.clone(), padding: None }).unwrap(),
                         funds: info.funds.clone(),
                     }),
                     CosmosMsg::Ibc(cosmwasm_std::IbcMsg::Transfer {
@@ -58,11 +58,11 @@ pub fn execute(_deps: DepsMut, env: Env, info: MessageInfo, msg: ExecMsg) -> Std
                             denom: decoded_msg.denom,
                         },
                         timeout: IbcTimeout::with_timestamp(env.block.time.plus_seconds(300)),
-                        memo: "".to_string(),
+                        memo: decoded_msg.memo.clone().unwrap_or("".to_string()),
                     })
                 ]))
             } else {
-                Err(cosmwasm_std::StdError::generic_err("Invalid receive message"))
+                Err(cosmwasm_std::StdError::generic_err("Receive message does not contain a valid UnwrapTransfer message"))
             }
         },
         ExecMsg::RegisterSnip20 {
