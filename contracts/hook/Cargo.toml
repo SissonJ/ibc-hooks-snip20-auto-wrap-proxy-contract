@@ -1,0 +1,27 @@
+[package]
+name          = "ibc-snip20-wrapping-hook"
+version       = { workspace = true }
+rust-version  = { workspace = true }
+authors       = { workspace = true }
+edition       = { workspace = true }
+keywords      = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cosmwasm-schema   = { workspace = true }
+cosmwasm-std      = { workspace = true }
+secret-toolkit    = { workspace = true }
+serde             = { workspace = true }
+thiserror         = { workspace = true }
+base64ct             = { workspace = true }
+
+[dev-dependencies]
+test-case         = { workspace = true }

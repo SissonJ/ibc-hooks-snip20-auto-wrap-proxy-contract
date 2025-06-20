@@ -2,6 +2,7 @@
 /target
 *.wasm
 *.wasm.gz
+/artifacts
 
 # Text file backups
 **/*.rs.bk
