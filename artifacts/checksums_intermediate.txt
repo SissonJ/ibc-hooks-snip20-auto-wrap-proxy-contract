@@ -1,0 +1,1 @@
+cf46c693e6897990d86a66c7b956f326c0de0e23a5c83053024df9cc914fd21a  ibc_hooks_snip20_auto_wrap_proxy_contract.wasm

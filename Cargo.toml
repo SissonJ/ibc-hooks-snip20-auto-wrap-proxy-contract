@@ -1,32 +1,46 @@
-[package]
-name = "ibc-hooks-snip20-auto-wrap-proxy-contract"
-version = "0.0.0"
-authors = ["SCRT Labs <info@scrtlabs.com>"]
-edition = "2018"
-description = "A compact contract that can be called using IBC hooks to wrap incoming token transfers as SNIP-20 tokens"
-license = "MIT"
+[workspace]
+resolver = "2"
+members  = [
+  "contracts/hook",
+  #"packages/*",
+]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[lib]
-crate-type = ["cdylib", "rlib"]
+[workspace.package]
+version       = "0.3.0"
+authors       = ["Jackson Swenson <jacksonswenson@securesecrets.org>"]
+edition       = "2021"
+rust-version  = "1.71.0"
+license       = "TBD"
+homepage      = ""
+repository    = ""
+documentation = ""
+keywords      = ["cosmwasm"]
 
-[profile.release]
-opt-level = 3
-debug = false
-rpath = false
-lto = true
-debug-assertions = false
-codegen-units = 1
-panic = 'abort'
-incremental = false
-overflow-checks = true
-
-[features]
-default = []
-backtraces = ["cosmwasm-std/backtraces"]
-with_floats = []
-
-[dependencies]
+[workspace.dependencies]
 cosmwasm-schema      = "1.5.4"
 cosmwasm-std = { package = "secret-cosmwasm-std", version = "1.1.11", features = ["stargate"]}
+secret-toolkit = { git = "https://github.com/scrtlabs/secret-toolkit", tag = "v0.10.0" }
+#cw2                  = "1.1"
+#cw20                 = "1.1"
+#cw-storage-plus      = "1"
+#cw-utils             = "1.0.3"
+#cw-multi-test        = "0.20.0"
+ibc-proto            = { version = "0.32.1", default-features = false }
+mockall              = "0.12.1"
+prost                = "0.11"
 serde                = { version = "1.0.194", default-features = false, features = ["derive"] }
+serde-cw-value       = "0.7.0"
+serde-json-wasm      = "1.0.1"
+test-case            = "3.3.1"
+thiserror            = "1"
+base64ct             = "=1.6.0"
+
+[profile.release]
+codegen-units    = 1
+debug            = false
+debug-assertions = false
+incremental      = false
+lto              = true
+opt-level        = 3
+overflow-checks  = true
+rpath            = false
