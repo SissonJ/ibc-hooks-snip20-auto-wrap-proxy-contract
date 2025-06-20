@@ -1,0 +1,4 @@
+## build
+```
+cargo cw-optimizoor
+```
