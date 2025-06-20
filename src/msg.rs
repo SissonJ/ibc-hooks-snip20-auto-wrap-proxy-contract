@@ -1,10 +1,7 @@
-use cosmwasm_std::{Addr, Binary, Uint128};
+use cosmwasm_std::{Binary, Uint128};
 use cosmwasm_schema::cw_serde;
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
 pub struct InitMsg {}
 
 #[cw_serde]
@@ -20,10 +17,11 @@ pub struct Snip20ReceiveMsg {
 pub struct UnwrapTransfer {
     pub channel: String,
     pub recipient_address: String,
+    pub code_hash: String,
+    pub denom: String,
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
 pub enum ExecMsg {
     WrapDeposit {
         snip20_address: String,
@@ -34,13 +32,10 @@ pub enum ExecMsg {
     RegisterSnip20 {
         snip20_address: String,
         snip20_code_hash: String,
-        denom: String,
     },
 }
 
-/// SNIP20 token handle messages
-#[derive(Serialize, Clone, Debug, Eq, PartialEq)]
-#[serde(rename_all = "snake_case")]
+#[cw_serde]
 pub enum Snip20HandleMsg {
     Deposit {
         padding: Option<String>,
@@ -61,11 +56,4 @@ pub enum Snip20HandleMsg {
         code_hash: String,
         padding: Option<String>,
     },
-}
-
-#[cw_serde]
-pub struct RegisteredSnip20 {
-    pub snip20_address: Addr,
-    pub snip20_code_hash: String,
-    pub denom: String,
 }
